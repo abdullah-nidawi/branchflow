@@ -1,0 +1,14 @@
+services:
+  postgres:
+    image: postgres:18
+    container_name: branchflow-postgres
+    environment:
+      POSTGRES_DB: ${POSTGRES_DB:-branchflow}
+      POSTGRES_USER: ${POSTGRES_USER:-branchflow}
+      POSTGRES_PASSWORD: ${POSTGRES_PASSWORD:?Set POSTGRES_PASSWORD in your local .env file}
+    ports:
+      - "5432:5432"
+    volumes:
+      - branchflow_pgdata:/var/lib/postgresql
+volumes:
+  branchflow_pgdata:
