@@ -1,7 +1,7 @@
 package com.branchflow.app.security;
 
 import com.branchflow.app.common.ApiError;
-import com.fasterxml.jackson.databind.ObjectMapper;
+import tools.jackson.databind.ObjectMapper;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.http.HttpMethod;
