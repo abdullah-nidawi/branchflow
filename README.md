@@ -7,8 +7,8 @@ BranchFlow is an operations API for a company with multiple retail branches. It 
 - Java 21 and Spring Boot 4.1
 - PostgreSQL, Spring Data JPA, and Flyway
 - Bean Validation and Spring Security HTTP Basic
-- OpenAPI / Swagger UI
-- Docker Compose
+- React, TypeScript, and Vite operations dashboard
+- OpenAPI / Swagger UI and Docker Compose
 
 ## Start the full application
 
@@ -20,7 +20,9 @@ BranchFlow is an operations API for a company with multiple retail branches. It 
    docker compose up --build
    ```
 
-4. Check health at `http://localhost:8080/actuator/health` and open the API docs at `http://localhost:8080/swagger-ui.html`.
+4. Open the dashboard at `http://localhost:3000`. Check API health at `http://localhost:8080/actuator/health`; the API docs are at `http://localhost:8080/swagger-ui.html` (also available through the dashboard proxy at `http://localhost:3000/swagger-ui.html`).
+
+Sign in with one of the configured demo accounts from `.env`. The dashboard keeps the HTTP Basic credential in memory for the current browser session and clears it when you sign out or reload.
 
 Flyway applies migrations on startup. PostgreSQL data persists in the `branchflow_pgdata` volume. To stop the services, run `docker compose down`. `docker compose down -v` also deletes the local database volume.
 
@@ -108,3 +110,5 @@ API errors use a consistent JSON shape with an HTTP status, message, timestamp, 
 ```sh
 ./mvnw verify
 ```
+
+The frontend can be built independently with `cd frontend && npm ci && npm run lint && npm run build`. GitHub Actions runs both verification pipelines on pushes and pull requests.

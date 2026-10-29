@@ -28,5 +28,14 @@ services:
       postgres:
         condition: service_healthy
 
+  web:
+    build:
+      context: ./frontend
+    container_name: branchflow-web
+    ports:
+      - "3000:80"
+    depends_on:
+      - api
+
 volumes:
   branchflow_pgdata:
